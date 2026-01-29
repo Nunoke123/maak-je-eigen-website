@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maak je eigen website!</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body id="body">
     <form id="titelFormulier" class="hidden">
         <div>
             <label>Voer hier een titel in:</label>
-            <input type="text" id="titelTekstVeld" placeholder="">
+            <input type="text" id="titelTekstVeld" placeholder="" autocomplete="off">
             <button type="button" id="titelKnop">Verzenden</button>
         </div>
     </form>
     <form id="beschrijvingFormulier" class="hidden">
         <div>
             <label>Voer hier een beschrijving in:</label>
-            <input type="text" id="beschrijvingTekstVeld" placeholder="">
+            <input type="text" id="beschrijvingTekstVeld" placeholder="" autocomplete="off">
             <button type="button" id="beschrijvingKnop">Verzenden</button>
+        </div>
+    </form>
+    <form id="titelKleurFormulier" class="hidden">
+        <div>
+            <label>Voer hier een kleur in voor jouw titel:</label>
+            <input type="color" id="titelKleurColorpicker" placeholder="" autocomplete="off">
+            <button type="button" id="titelKleurKnop">Verzenden</button>
+        </div>
+    </form>
+    <form id="beschrijvingKleurFormulier" class="hidden">
+        <div>
+            <label>Voer hier een kleur in voor jouw beschrijving:</label>
+            <input type="color" id="beschrijvingKleurColorpicker" placeholder="" autocomplete="off">
+            <button type="button" id="beschrijvingKleurKnop">Verzenden</button>
+        </div>
+    </form>
+    <form id="achtergrondKleurFormulier" class="hidden">
+        <div>
+            <label>Voer hier een kleur in voor jouw achtergrond:</label>
+            <input type="color" id="achtergrondKleurColorpicker" placeholder="" autocomplete="off">
+            <button type="button" id="achtergrondKleurKnop">Verzenden</button>
+        </div>
+    </form>
+    <form id="afbeeldingFormulier" class="hidden">
+        <div>
+            <label>Kies een afbeelding:</label>
+            <input type="file" id="afbeeldingInput" accept="image/*">
+            <button type="button" id="afbeeldingKnop">Verzenden</button>
         </div>
     </form>
 
@@ -28,4 +58,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
