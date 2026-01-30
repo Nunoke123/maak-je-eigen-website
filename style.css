@@ -8,6 +8,11 @@ body {
     height: 100vh;
 }
 
+img {
+    max-width: 50svw;
+    max-height: 50svh;
+}
+
 .hidden {
     display: none;
 }

@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const titelElement = document.getElementById("titel");
     const beschrijvingElement = document.getElementById("beschrijving");
     const afbeeldingElement = document.getElementById("afbeelding");
+    const creditsElement = document.getElementById("credits");
+    const naamElement = document.getElementById("naam");
     const bodyElement = document.getElementById("body");
     const titelForm = document.getElementById("titelFormulier");
     const beschrijvingForm = document.getElementById("beschrijvingFormulier");
@@ -10,13 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const achtergrondKleurForm = document.getElementById("achtergrondKleurFormulier");
     const afbeeldingForm = document.getElementById("afbeeldingFormulier");
     const afbeeldingInput = document.getElementById("afbeeldingInput");
+    const creditsForm = document.getElementById("creditsFormulier");
 
     titelForm.classList.remove("hidden");
 
     document.getElementById("titelKnop").addEventListener("click", function () {
         let titel = document.getElementById("titelTekstVeld").value;
         titelElement.textContent = titel;
-        document.title = titel;
+        document.title = '"' + titel + '"';
         titelForm.classList.add("hidden");
 
         beschrijvingForm.classList.remove("hidden");
@@ -58,6 +61,18 @@ document.addEventListener("DOMContentLoaded", function () {
                             }
 
                             afbeeldingForm.classList.add("hidden");
+
+                            creditsForm.classList.remove("hidden");
+
+                            document.getElementById("creditsKnop").addEventListener("click", function () {
+                                let credits = document.getElementById("creditsTekstVeld").value;
+                                creditsElement.style.color = beschrijvingKleur;
+                                creditsElement.classList.remove("hidden");
+                                naamElement.textContent = credits;
+                                naamElement.style.color = "gold";
+                                document.title = '"' + titel + '"' + " door " + credits;
+                                creditsForm.classList.add("hidden");
+                            });
                         });
                     });
                 });
