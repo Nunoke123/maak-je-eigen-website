@@ -66,10 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             document.getElementById("creditsKnop").addEventListener("click", function () {
                                 let credits = document.getElementById("creditsTekstVeld").value;
+                                let creditsColor = document.getElementById("creditsColorPicker").value;
                                 creditsElement.style.color = beschrijvingKleur;
                                 creditsElement.classList.remove("hidden");
                                 naamElement.textContent = credits;
-                                naamElement.style.color = "gold";
+                                naamElement.style.color = creditsColor;
                                 document.title = '"' + titel + '"' + " door " + credits;
                                 creditsForm.classList.add("hidden");
                             });
