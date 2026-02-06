@@ -9,51 +9,59 @@
 </head>
 
 <body id="body">
+
     <form id="titelFormulier" class="hidden">
         <div>
             <label for="titelTekstVeld">Voer hier een titel in:</label>
-            <input type="text" id="titelTekstVeld" placeholder="" autocomplete="off">
+            <input type="text" id="titelTekstVeld" autocomplete="off">
             <button type="button" id="titelKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="beschrijvingFormulier" class="hidden">
         <div>
             <label for="beschrijvingTekstVeld">Voer hier een beschrijving in:</label>
-            <input type="text" id="beschrijvingTekstVeld" placeholder="" autocomplete="off">
+            <input type="text" id="beschrijvingTekstVeld" autocomplete="off">
             <button type="button" id="beschrijvingKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="titelKleurFormulier" class="hidden">
         <div>
-            <label for="titelKleurColorpicker">Voer hier een kleur in voor jouw titel:</label>
-            <input type="color" id="titelKleurColorpicker" placeholder="" autocomplete="off">
+            <label for="titelKleurColorpicker">Titelkleur:</label>
+            <input type="color" id="titelKleurColorpicker">
             <button type="button" id="titelKleurKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="beschrijvingKleurFormulier" class="hidden">
         <div>
-            <label for="beschrijvingKleurColorpicker">Voer hier een kleur in voor jouw beschrijving:</label>
-            <input type="color" id="beschrijvingKleurColorpicker" placeholder="" autocomplete="off">
+            <label for="beschrijvingKleurColorpicker">Beschrijvingkleur:</label>
+            <input type="color" id="beschrijvingKleurColorpicker">
             <button type="button" id="beschrijvingKleurKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="achtergrondKleurFormulier" class="hidden">
         <div>
-            <label for="achtergrondKleurColorpicker">Voer hier een kleur in voor jouw achtergrond:</label>
-            <input type="color" id="achtergrondKleurColorpicker" placeholder="" autocomplete="off">
+            <label for="achtergrondKleurColorpicker">Achtergrondkleur:</label>
+            <!-- ⭐ FIX -->
+            <input type="color" id="achtergrondKleurColorpicker" value="#ffffff">
             <button type="button" id="achtergrondKleurKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="afbeeldingFormulier" class="hidden">
         <div>
-            <label for="afbeeldingInput">Voer hier een afbeelding in:</label>
+            <label for="afbeeldingInput">Afbeelding:</label>
             <input type="file" id="afbeeldingInput" accept="image/*">
             <button type="button" id="afbeeldingKnop">Verzenden</button>
         </div>
     </form>
+
     <form id="creditsFormulier" class="hidden">
         <div>
-            <label for="creditsInput">Voer hier je naam en lievelingskleur in:</label>
+            <label for="creditsTekstVeld">Naam en lievelingskleur:</label>
             <input type="text" id="creditsTekstVeld">
             <input type="color" id="creditsColorPicker">
             <button type="button" id="creditsKnop">Verzenden</button>
@@ -64,6 +72,7 @@
     <p id="beschrijving"></p>
     <img src="" alt="" id="afbeelding">
     <p id="credits" class="hidden">Deze website is gemaakt door <span id="naam"></span>!</p>
+
     <script src="script.js"></script>
 </body>
 

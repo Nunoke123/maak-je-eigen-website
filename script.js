@@ -1,83 +1,151 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const titelElement = document.getElementById("titel");
-    const beschrijvingElement = document.getElementById("beschrijving");
-    const afbeeldingElement = document.getElementById("afbeelding");
+// todo: fix creditskleur
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ---------- Prevent form refresh (ENTER key fix) ----------
+    document.querySelectorAll("form").forEach(f =>
+        f.addEventListener("submit", e => e.preventDefault())
+    );
+
+    // ---------- Elements ----------
+    const titel = document.getElementById("titel");
+    const beschrijving = document.getElementById("beschrijving");
+    const img = document.getElementById("afbeelding");
+    const body = document.getElementById("body");
+
+    const titelTekstVeld = document.getElementById("titelTekstVeld");
+    const beschrijvingTekstVeld = document.getElementById("beschrijvingTekstVeld");
+    const titelKleurColorpicker = document.getElementById("titelKleurColorpicker");
+    const beschrijvingKleurColorpicker = document.getElementById("beschrijvingKleurColorpicker");
+    const achtergrondKleurColorpicker = document.getElementById("achtergrondKleurColorpicker");
+
+    const afbeeldingInput = document.getElementById("afbeeldingInput");
+
+    const titelKnop = document.getElementById("titelKnop");
+    const beschrijvingKnop = document.getElementById("beschrijvingKnop");
+    const titelKleurKnop = document.getElementById("titelKleurKnop");
+    const beschrijvingKleurKnop = document.getElementById("beschrijvingKleurKnop");
+    const achtergrondKleurKnop = document.getElementById("achtergrondKleurKnop");
+    const afbeeldingKnop = document.getElementById("afbeeldingKnop");
+    const creditsKnop = document.getElementById("creditsKnop");
+
     const creditsElement = document.getElementById("credits");
     const naamElement = document.getElementById("naam");
-    const bodyElement = document.getElementById("body");
-    const titelForm = document.getElementById("titelFormulier");
-    const beschrijvingForm = document.getElementById("beschrijvingFormulier");
-    const titelKleurForm = document.getElementById("titelKleurFormulier");
-    const beschrijvingKleurForm = document.getElementById("beschrijvingKleurFormulier");
-    const achtergrondKleurForm = document.getElementById("achtergrondKleurFormulier");
-    const afbeeldingForm = document.getElementById("afbeeldingFormulier");
-    const afbeeldingInput = document.getElementById("afbeeldingInput");
-    const creditsForm = document.getElementById("creditsFormulier");
+    const creditsTekstVeld = document.getElementById("creditsTekstVeld");
+    const creditsColorPicker = document.getElementById("creditsColorPicker");
 
-    titelForm.classList.remove("hidden");
+    const forms = [
+        "titelFormulier",
+        "beschrijvingFormulier",
+        "titelKleurFormulier",
+        "beschrijvingKleurFormulier",
+        "achtergrondKleurFormulier",
+        "afbeeldingFormulier",
+        "creditsFormulier"
+    ];
 
-    document.getElementById("titelKnop").addEventListener("click", function () {
-        let titel = document.getElementById("titelTekstVeld").value;
-        titelElement.textContent = titel;
-        document.title = '"' + titel + '"';
-        titelForm.classList.add("hidden");
+    let beschrijvingKleur;
 
-        beschrijvingForm.classList.remove("hidden");
+    // ---------- Step system (geen nesting meer) ----------
+    function showStep(index) {
+        forms.forEach(id =>
+            document.getElementById(id).classList.add("hidden")
+        );
+        document.getElementById(forms[index]).classList.remove("hidden");
+    }
 
-        document.getElementById("beschrijvingKnop").addEventListener("click", function () {
-            let beschrijving = document.getElementById("beschrijvingTekstVeld").value;
-            beschrijvingElement.textContent = beschrijving;
-            beschrijvingForm.classList.add("hidden");
+    showStep(0);
 
-            titelKleurForm.classList.remove("hidden");
+    // ---------- LIVE PREVIEW ----------
 
-            document.getElementById("titelKleurKnop").addEventListener("click", function () {
-                let titelKleur = document.getElementById("titelKleurColorpicker").value;
-                titelElement.style.color = titelKleur;
-                titelKleurForm.classList.add("hidden");
-
-                beschrijvingKleurForm.classList.remove("hidden");
-
-                document.getElementById("beschrijvingKleurKnop").addEventListener("click", function () {
-                    let beschrijvingKleur = document.getElementById("beschrijvingKleurColorpicker").value;
-                    beschrijvingElement.style.color = beschrijvingKleur;
-                    beschrijvingKleurForm.classList.add("hidden");
-
-                    achtergrondKleurForm.classList.remove("hidden");
-
-                    document.getElementById("achtergrondKleurKnop").addEventListener("click", function () {
-                        let achtergrondKleur = document.getElementById("achtergrondKleurColorpicker").value;
-                        bodyElement.style.backgroundColor = achtergrondKleur;
-                        achtergrondKleurForm.classList.add("hidden");
-
-                        afbeeldingForm.classList.remove("hidden");
-
-                        document.getElementById("afbeeldingKnop").addEventListener("click", function () {
-                            const bestand = afbeeldingInput.files[0];
-
-                            if (bestand) {
-                                const imageURL = URL.createObjectURL(bestand);
-                                afbeeldingElement.src = imageURL;
-                            }
-
-                            afbeeldingForm.classList.add("hidden");
-
-                            creditsForm.classList.remove("hidden");
-
-                            document.getElementById("creditsKnop").addEventListener("click", function () {
-                                let credits = document.getElementById("creditsTekstVeld").value;
-                                let creditsColor = document.getElementById("creditsColorPicker").value;
-                                creditsElement.style.color = beschrijvingKleur;
-                                creditsElement.classList.remove("hidden");
-                                naamElement.textContent = credits;
-                                naamElement.style.color = creditsColor;
-                                document.title = '"' + titel + '"' + " door " + credits;
-                                creditsForm.classList.add("hidden");
-                            });
-                        });
-                    });
-                });
-            });
-        });
+    titelTekstVeld.addEventListener("input", () => {
+        titel.textContent = titelTekstVeld.value;
+        document.title = '"' + titelTekstVeld.value + '"';
     });
+
+    beschrijvingTekstVeld.addEventListener("input", () => {
+        beschrijving.textContent = beschrijvingTekstVeld.value;
+    });
+
+    titelKleurColorpicker.addEventListener("input", () => {
+        titel.style.color = titelKleurColorpicker.value;
+    });
+
+    beschrijvingKleurColorpicker.addEventListener("input", () => {
+        beschrijvingKleur = beschrijvingKleurColorpicker.value;
+        beschrijving.style.color = beschrijvingKleur;
+    });
+
+    achtergrondKleurColorpicker.addEventListener("input", () => {
+        body.style.backgroundColor = achtergrondKleurColorpicker.value;
+    });
+
+    creditsTekstVeld.addEventListener("input", () => {
+        naamElement.textContent = creditsTekstVeld.value;
+        // Show the credits preview as soon as the user starts typing so
+        // they can see their name live (the #credits element is hidden by default)
+        creditsElement.classList.remove("hidden");
+    });
+
+    creditsColorPicker.addEventListener("input", () => {
+        naamElement.style.color = creditsColorPicker.value;
+        // Also ensure the credits preview is visible when a color is chosen
+        creditsElement.classList.remove("hidden");
+    });
+
+    // ---------- STEP BUTTONS ----------
+
+    titelKnop.onclick = () => showStep(1);
+    beschrijvingKnop.onclick = () => showStep(2);
+    titelKleurKnop.onclick = () => showStep(3);
+    beschrijvingKleurKnop.onclick = () => showStep(4);
+    achtergrondKleurKnop.onclick = () => showStep(5);
+    afbeeldingKnop.onclick = () => showStep(6);
+
+    // ---------- IMAGE UPLOAD ----------
+
+    afbeeldingInput.addEventListener("change", () => {
+        const file = afbeeldingInput.files[0];
+
+        if (file) {
+            img.src = URL.createObjectURL(file);
+        }
+    });
+
+    // ---------- DRAG & DROP IMAGE ----------
+
+    body.addEventListener("dragover", e => e.preventDefault());
+
+    body.addEventListener("drop", e => {
+        e.preventDefault();
+
+        const file = e.dataTransfer.files[0];
+
+        if (file && file.type.startsWith("image")) {
+            img.src = URL.createObjectURL(file);
+        }
+    });
+
+    // ---------- FINAL STEP ----------
+
+    creditsKnop.onclick = () => {
+
+        const naam = creditsTekstVeld.value;
+        const kleur = creditsColorPicker.value;
+
+        naamElement.textContent = naam;
+        creditsElement.style.color = beschrijvingKleur
+        naamElement.style.color = kleur;
+
+        creditsElement.classList.remove("hidden");
+
+        document.title = `"${titel.textContent}" door ${naam}`;
+
+    document.getElementById("creditsFormulier").classList.add("hidden");
+
+    // Allow the browser to repaint the DOM changes before showing the blocking alert
+    // (browsers sometimes delay painting until JavaScript yields; calling alert
+    // immediately can show the dialog before visual updates are rendered)
+    setTimeout(() => alert("Klaar! 🎉"), 300);
+    };
+
 });
