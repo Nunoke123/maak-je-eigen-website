@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         naamElement.textContent = creditsTekstVeld.value;
         // Show the credits preview as soon as the user starts typing so
         // they can see their name live (the #credits element is hidden by default)
+        creditsElement.style.color = beschrijvingKleur
         creditsElement.classList.remove("hidden");
     });
 
